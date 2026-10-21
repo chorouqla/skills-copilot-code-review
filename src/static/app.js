@@ -24,6 +24,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("login-form");
   const closeLoginModal = document.querySelector(".close-login-modal");
   const loginMessage = document.getElementById("login-message");
+  const announcementBanner = document.getElementById("announcement-banner");
+  const dismissAnnouncementButton = document.getElementById("dismiss-announcement");
+  const announcementDismissalKey = "activity-registration-announcement-dismissed";
+
+  if (localStorage.getItem(announcementDismissalKey) === "true") {
+    announcementBanner.classList.add("hidden");
+  }
+
+  dismissAnnouncementButton.addEventListener("click", () => {
+    announcementBanner.classList.add("hidden");
+    localStorage.setItem(announcementDismissalKey, "true");
+  });
 
   // Activity categories with corresponding colors
   const activityTypes = {
